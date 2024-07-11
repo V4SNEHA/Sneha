@@ -565,7 +565,7 @@ def welcome_start(message):
     user_name = message.from_user.first_name
     response = f'''👋🏻Welcome to Your Home, {user_name}! Feel Free to Explore.
 🤖Try To Run This Command : /help 
-✅Join :- By @MdNabazish'''
+✅Join :- By @Shubam_chitty'''
     bot.reply_to(message, response)
 
 @bot.message_handler(commands=['rules'])
